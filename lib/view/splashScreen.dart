@@ -10,19 +10,18 @@ class SplashScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            '#233',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Image.network(
+            'https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png',
+            height: 300,
+            width: 300,
           ),
           const SizedBox(
             height: 20,
           ),
-          const Text('Target: 555'),
-          const SizedBox(
-            height: 15,
+          const Text(
+            'UnSad App',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          Image.network(
-              'https://static.langimg.com/thumb/msid-79623655,width-540,resizemode-3/79623655.jpg'),
         ],
       )),
     );
