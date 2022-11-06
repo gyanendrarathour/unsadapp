@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:unsadapp/controller/fetchMeme.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  void updateImage() async {
+    String getImageUrl = await FetchMeme.fetchNewMeme();
+    setState(() {
+      imageUrl = getImageUrl;
+    });
+  }
+
+  String imageUrl =
+      'https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,14 +40,18 @@ class MainScreen extends StatelessWidget {
               height: 10,
             ),
             Image.network(
-              'https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png',
+              imageUrl,
               height: 300,
               width: 300,
             ),
             const SizedBox(
               height: 10,
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('More Fun!')),
+            ElevatedButton(
+                onPressed: () {
+                  updateImage();
+                },
+                child: const Text('More Fun!')),
             const Spacer(),
             const Text(
               'Develooped By',
